@@ -79,7 +79,7 @@ class login_controller extends model
                         $this->print_stuf("There was an error creating the account");
                     }
                 }else{
-                    $this->print_stuf("Mail Alrady has an Account");
+                    $this->print_stuf("<h1>mail alrady exits <a href='sign-in' style='text-decoration:underline; color: blue;'>sign-in</a></h1>") ;
                 }
             }else{
                 print_r("<h4> <center> Password Not Same </center> </h4> ");

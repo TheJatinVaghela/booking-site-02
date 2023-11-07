@@ -13,10 +13,12 @@ class controller extends model
     }
     
     protected function site_initialize(){
-       
+        if(isset($_SESSION["user_info"])){
+             $this->user_info = $_SESSION["user_info"];
+        }
         if($_SERVER["PATH_INFO"] == "/home"){
             
-            $this->user_info = $_SESSION["user_info"];
+            
             // $this->print_stuf($this->user_info["user_name"]);
             $this->header_footer_inbitwin("../view/site/home.php");
         }
