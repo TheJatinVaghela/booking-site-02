@@ -1,9 +1,10 @@
 <?php
 require_once("../model/model.php");
 require_once("../controller/login-controller.php");
+require_once("../controller/user-controller.php");
 class controller extends model 
 {   
-
+    public $user_info;
     public function __construct(){
          parent::__construct();
         // $this->print_stuf($_SERVER);
@@ -14,12 +15,19 @@ class controller extends model
     protected function site_initialize(){
        
         if($_SERVER["PATH_INFO"] == "/home"){
+            
+            $this->user_info = $_SESSION["user_info"];
+            // $this->print_stuf($this->user_info["user_name"]);
             $this->header_footer_inbitwin("../view/site/home.php");
         }
         else if(($_SERVER["PATH_INFO"] == ('/sign-in'))||($_SERVER["PATH_INFO"] == ('/sign-up'))){
             $login = new login_controller();
             $login->login_site_initialize();
            
+        }
+        else if($_SERVER["PATH_INFO"] = "/user"){
+            $user = new user_controller();
+            $user->user_site_initialize();
         }
         else{
 

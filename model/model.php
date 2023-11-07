@@ -13,7 +13,7 @@ class model
         try {
             $this->connection = new mysqli($hostname,$directri,$password,$data_base);
         } catch (\Throwable $th) {
-           
+           echo $th->getMessage();
         }
     }
 
@@ -29,13 +29,21 @@ class model
         };
        $sql = substr($sql ,0 ,-1);
        $sql .= ')';
-       $this->print_stuf($sql);
+    //    $this->print_stuf($sql);
+        $sqlex = $this->connection->query($sql);
+        return $sqlex;
    }
    
-   protected function chack_user_exist($table,$mail){
-      $sql = "SELECT * FROM $table WHERE user_mail = $mail";
-      $sqlex = $this->connection->query($sql);
-      $answer = ($sqlex > 0)? true : false;
+   public function delete($table , $key , $data){
+    $sql = "delete from $table where $key = $data";
+    $sqlex = $this->connection->query($sql);
+    return $sqlex;
+   }
+
+   protected function chack_user_exist($table,$key,$mail){
+      $sqlex = "SELECT * FROM $table WHERE $key = '$mail'";
+      $sql = $this->connection->query($sqlex);
+      $answer = ($sql->num_rows > 0)? $sql->fetch_object() : false;
       return $answer;
    }
    public function print_stuf($stuf){

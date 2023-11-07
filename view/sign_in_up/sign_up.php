@@ -20,6 +20,7 @@
                         <h2 class="title">to Booking-2 </h2>
                     </div>
                     <form action="" method="post" class="account-form">
+                            
                         <div class="form-group">
                             <label for="name">name<span>*</span></label>
                             <input type="text" placeholder="Enter Your name" name="user_name" id="name" required>

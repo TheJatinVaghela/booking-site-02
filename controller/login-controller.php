@@ -4,7 +4,7 @@ class login_controller extends model
 { 
     
     public function __construct(){
-     
+        parent::__construct();
         // $this->login_site_initialize();
     } 
     
@@ -36,8 +36,23 @@ class login_controller extends model
                 $_REQUEST["remember_me"] = 1;
             }
             array_pop($_REQUEST);
-            $this->print_stuf($_REQUEST);
-            $answer = $this->chack_user_exist("account",$_REQUEST["chack_user_mail"]);
+            // $this->print_stuf($_REQUEST);
+            $answer = $this->chack_user_exist("account","user_mail",$_REQUEST["chack_user_mail"]);
+            if($answer != false){
+                if(isset($_SESSION["user_info"])){
+                    unset($_SESSION["user_info"]);
+                };
+                $arr = array();
+                foreach ($answer as $key => $value) {
+                     $arr[$key]=$value;
+                    
+                }
+                $_SESSION["user_info"]=$arr;
+                // $this->print_stuf($arr);
+                 header("Location:home");
+            }else{
+                $this->print_stuf("<h1>Incorect Info <a href='sign-up' style='text-decoration:underline; color: blue;'>sign-up</a></h1>") ;
+            }
             
         }
     }
@@ -49,8 +64,23 @@ class login_controller extends model
             if($_REQUEST["user_pass"]==$_REQUEST["user_pass_2"]){
                 unset($_REQUEST["user_pass_2"]);
                 array_pop($_REQUEST);
-                $this->print_stuf($_REQUEST);
-                $this->add_account("account",$_REQUEST);
+                // $this->print_stuf($_REQUEST);
+                $answer = $this->chack_user_exist("account","user_mail",$_REQUEST["user_mail"]);
+                if($answer == false){
+                    $answer = $this->add_account("account",$_REQUEST);
+                    if($answer == 1){
+                        if(isset($_SESSION["user_info"])){
+                            unset($_SESSION["user_info"]);
+                        };
+                        // $this->print_stuf($_SESSION["user_info"]);
+                         $_SESSION["user_info"] = $_REQUEST;
+                         header("Location:home");
+                    }else if($answer == 0){
+                        $this->print_stuf("There was an error creating the account");
+                    }
+                }else{
+                    $this->print_stuf("Mail Alrady has an Account");
+                }
             }else{
                 print_r("<h4> <center> Password Not Same </center> </h4> ");
             };

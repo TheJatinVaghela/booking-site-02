@@ -29,14 +29,14 @@
 
 <body>
     <!-- ==========Preloader========== -->
-    <div class="preloader">
+    <!-- <div class="preloader">
         <div class="preloader-inner">
             <div class="preloader-icon">
                 <span></span>
                 <span></span>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- ==========Preloader========== -->
     <!-- ==========Overlay========== -->
     <div class="overlay"></div>
@@ -158,9 +158,22 @@
                     <li>
                         <a href="contact.html">contact</a>
                     </li>
-                    <li class="header-button pr-0">
-                        <a href="sign-in">join us</a>
-                    </li>
+                    <?php 
+                        if(isset($this->user_info["user_name"])){
+                            $name = $this->user_info["user_name"];
+                            ?>
+                            
+                                <li class="header-button pr-0">
+                                    <a href="http://localhost/clones/booking-site-02/public/user/<?php echo $name?>"><?php echo $name?></a>
+                                </li>
+                        <?php   
+                        }else{ ?>
+                                <li class="header-button pr-0">
+                                    <a href="sign-in">join us</a>
+                                </li>
+                        <?php }
+                    ?>
+                    
                 </ul>
                 <div class="header-bar d-lg-none">
 					<span></span>
