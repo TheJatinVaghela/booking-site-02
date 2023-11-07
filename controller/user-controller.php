@@ -17,7 +17,7 @@ class user_controller extends model
             $answer = $this->delete("account","u_id",$this->user_info["u_id"]);
             //  $this->print_stuf($answer);
              if($answer == 1){
-                header("Location:http://localhost/clones/booking-site-02/public/sign-in");
+                header("Location:http://localhost/clones/booking-site-02/public/sign-up");
              }else{
                 echo "error: " . $answer ."";
              }

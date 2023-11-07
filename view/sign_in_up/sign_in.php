@@ -34,7 +34,7 @@
                             <a href="sign-up" class="forget-pass">Forget Password</a>
                         </div>
                         <div class="form-group text-center">
-                            <input type="submit" name="sign_in" value="sign_in">
+                            <input type="submit" name="sign_in" value="sign in">
                         </div>
                     </form>
                     <div class="option">
