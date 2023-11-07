@@ -6,7 +6,7 @@ class controller extends model
 
     public function __construct(){
          parent::__construct();
-        // $this->print_stuf_controller($_SERVER);
+        // $this->print_stuf($_SERVER);
   
         $this->site_initialize();
     }
@@ -26,12 +26,6 @@ class controller extends model
             header("Location:http://localhost/clones/booking-site-02/public/home");
         }
             
-    }
-
-    public function print_stuf_controller($stuf){
-        echo "<pre>";
-        print_r($stuf);
-        echo "</pre>";
     }
     protected function header_footer_inbitwin($site){
         require_once("../view/site/header.php");

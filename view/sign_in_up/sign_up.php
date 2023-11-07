@@ -21,12 +21,16 @@
                     </div>
                     <form action="" method="post" class="account-form">
                         <div class="form-group">
+                            <label for="name">name<span>*</span></label>
+                            <input type="text" placeholder="Enter Your name" name="user_name" id="name" required>
+                        </div>
+                        <div class="form-group">
                             <label for="email1">Email<span>*</span></label>
                             <input type="text" placeholder="Enter Your Email" name="user_mail" id="email1" required>
                         </div>
                         <div class="form-group">
                             <label for="pass1">Password<span>*</span></label>
-                            <input type="password" placeholder="Password" name="user_pass_1" id="pass1" required>
+                            <input type="password" placeholder="Password" name="user_pass" id="pass1" required>
                         </div>
                         <div class="form-group">
                             <label for="pass2">Confirm Password<span>*</span></label>
