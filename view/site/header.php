@@ -56,7 +56,7 @@
                 </div>
                 <ul class="menu">
                     <li>
-                        <a href="#0" class="active">Home</a>
+                        <a href="http://localhost/clones/booking-site-02/public/home" class="active">Home</a>
                     </li>
                     <li>
                         <a href="#0">movies</a>
