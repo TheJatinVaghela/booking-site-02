@@ -6,19 +6,24 @@ require_once("../controller/movie-seats-controller.php");
 class controller extends model 
 {   
     public $user_info;
+    public $data_info;
     public function __construct(){
          parent::__construct();
         // $this->print_stuf($_SERVER);
-  
+        $this->data_info = $this->get_all_data(["movie_list"=>"movie_list"]);
         $this->site_initialize();
     }
     
     protected function site_initialize(){
-        if(isset($_SESSION["user_info"])){
-             $this->user_info = $_SESSION["user_info"];
+        if(isset($_COOKIE["user_info"])){
+            if($_COOKIE["user_info"] != "0"){
+                $answer = $this->chack_user_exist("account","u_id",$_COOKIE["user_info"]);
+                $this->user_info = $answer;
+            }
         };
         if($_SERVER["PATH_INFO"] == "/home"){
-            // $this->print_stuf($this->user_info["user_name"]);
+            
+            // $this->print_stuf($this->data_info);
             $this->header_footer_inbitwin("../view/site/home.php");
         }
         else if(($_SERVER["PATH_INFO"] == ('/sign-in'))||($_SERVER["PATH_INFO"] == ('/sign-up'))){
@@ -29,6 +34,9 @@ class controller extends model
         else if($_SERVER["PATH_INFO"] == "/movie-seats"){
             $movie_steats = new movie_steats_controller();
             $movie_steats->movie_steat_initialize();
+        }
+        else if($_SERVER["PATH_INFO"] == "/all-movies-list"){
+            $this->header_footer_inbitwin("../view/site/all-movies-list.php");
         }
         else if($_SERVER["PATH_INFO"] = "/user"){
             $user = new user_controller();

@@ -286,96 +286,66 @@
                     <div class="article-section padding-bottom">
                         <div class="section-header-1">
                             <h2 class="title">movies</h2>
-                            <a class="view-all" href="movie-grid.html">View All</a>
+                            <a class="view-all" href="all-movies-list">View All</a>
                         </div>
                         <div class="row mb-30-none justify-content-center">
+                            
+                            <?php
+                            foreach ($this->data_info as $key => $value) { 
+                                if($key == 3){
+                                    break;
+                                }
+                                $id = $value["movie_id"];
+                                $name = $value["movie_name"];
+                                $tamato_rating = $value["movie_tomato_rating"];
+                                $box_office_rating = $value["movie_box_office_rating"];
+                                $img = $value["movie_img"];
+                                $available = $value["available"];
+                                ?>
+                                    <!-- //    echo "<pre>";
+                                        //    print_r($value);
+                                        //    echo "</pre>"; -->
                             <form class="col-sm-6 col-lg-4" action="movie-seats" method="post">
                                 <div class="movie-grid">
                                     <div class="movie-thumb c-thumb">
                                         <a >
-                                            <img src="<?php echo $this->assets;?>images/movie/movie01.jpg" alt="movie">
+                                            <img src="<?php echo $this->assets.$img;?>" alt="movie">
                                         </a>
                                     </div>
                                     <div class="movie-content bg-one">
                                         <h5 class="title m-0">
-                                            <a name="movie_name" value="alone">alone</a>
+                                            <a name="movie_name" value="alone"><?php echo $name?></a>
                                         </h5>
                                         <ul class="movie-rating-percent">
                                             <li>
                                                 <div class="thumb">
                                                     <img src="<?php echo $this->assets;?>images/movie/tomato.png" alt="movie">
                                                 </div>
-                                                <span class="content" >88%</span>
+                                                <span class="content" name="movie_tomato_rating" ><?php echo $tamato_rating?></span>
                                             </li>
                                             <li>
                                                 <div class="thumb">
                                                     <img src="<?php echo $this->assets;?>images/movie/cake.png" alt="movie">
                                                 </div>
-                                                <span class="content">88%</span>
+                                                <span class="content" name="movie_box_office_rating"><?php echo $box_office_rating?></span>
                                             </li>
                                             <li class="header-button pr-0">
-                                                <button type="submit" name="movie_id" value="1" style="color:blue;">Add</button>
+                                                <input type="text" disabled name="available" value="<?php echo $available?>" style="color:green; border:none; display:contents;">
+                                                    <?php echo ($available == 1)? '🟢' : '🔴';  ?>
+                                                </input>
+                                            </li>
+                                            <li class="header-button pr-0">
+                                                <button type="submit" name="movie_id" value="<?php echo $id?>" style="color:blue;">Add</button>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </form>
-                            <div class="col-sm-6 col-lg-4">
-                                <div class="movie-grid">
-                                    <div class="movie-thumb c-thumb">
-                                        <a href="#0">
-                                            <img src="<?php echo $this->assets;?>images/movie/movie02.jpg" alt="movie">
-                                        </a>
-                                    </div>
-                                    <div class="movie-content bg-one">
-                                        <h5 class="title m-0">
-                                            <a href="#0">mars</a>
-                                        </h5>
-                                        <ul class="movie-rating-percent">
-                                            <li>
-                                                <div class="thumb">
-                                                    <img src="<?php echo $this->assets;?>images/movie/tomato.png" alt="movie">
-                                                </div>
-                                                <span class="content">88%</span>
-                                            </li>
-                                            <li>
-                                                <div class="thumb">
-                                                    <img src="<?php echo $this->assets;?>images/movie/cake.png" alt="movie">
-                                                </div>
-                                                <span class="content">88%</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4">
-                                <div class="movie-grid">
-                                    <div class="movie-thumb c-thumb">
-                                        <a href="#0">
-                                            <img src="<?php echo $this->assets;?>images/movie/movie03.jpg" alt="movie">
-                                        </a>
-                                    </div>
-                                    <div class="movie-content bg-one">
-                                        <h5 class="title m-0">
-                                            <a href="#0">venus</a>
-                                        </h5>
-                                        <ul class="movie-rating-percent">
-                                            <li>
-                                                <div class="thumb">
-                                                    <img src="<?php echo $this->assets;?>images/movie/tomato.png" alt="movie">
-                                                </div>
-                                                <span class="content">88%</span>
-                                            </li>
-                                            <li>
-                                                <div class="thumb">
-                                                    <img src="<?php echo $this->assets;?>images/movie/cake.png" alt="movie">
-                                                </div>
-                                                <span class="content">88%</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+
+                            <?php    
+                            }
+                            ?>
+                            
                         </div>
                     </div>
                     <div class="article-section padding-bottom">

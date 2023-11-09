@@ -32,24 +32,24 @@ class login_controller extends model
 
     protected function chack_sign_in(){
         if(isset($_REQUEST["sign_in"])){
+           
             if($_REQUEST["remember_me"]=='on'){
                 $_REQUEST["remember_me"] = 1;
-            }
+            };
             array_pop($_REQUEST);
             // $this->print_stuf($_REQUEST);
-            $answer = $this->chack_user_exist("account","user_mail",$_REQUEST["chack_user_mail"]);
-            if($answer != false){
+            $arr = $this->chack_user_exist("account","user_mail",$_REQUEST["chack_user_mail"]);
+            if($arr != false){
                 if(isset($_SESSION["user_info"])){
                     unset($_SESSION["user_info"]);
                 };
-                $arr = array();
-                foreach ($answer as $key => $value) {
-                     $arr[$key]=$value;
-                    
+                
+                if($arr["Terms"]==1){
+                    $cookie_name = "user_info";
+                    setcookie($cookie_name, $arr["u_id"], time() + (86400 * 30), "/"); // 86400 = 1 day
+                    //  $this->print_stuf($_COOKIE["user_info"]);
                 }
-                $_SESSION["user_info"]=$arr;
-                // $this->print_stuf($arr);
-                 header("Location:home");
+                  header("Location:home");
             }else{
                 $this->print_stuf("<h1>Incorect Info <a href='sign-up' style='text-decoration:underline; color: blue;'>sign-up</a></h1>") ;
             }

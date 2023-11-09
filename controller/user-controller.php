@@ -6,9 +6,15 @@ class user_controller extends model
 
     public function __construct(){
         parent::__construct();
-        if(isset($_SESSION["user_info"])){
-            $this->user_info = $_SESSION["user_info"];
-       }
+        if(isset($_COOKIE["user_info"])){
+
+            $answer = $this->chack_user_exist("account","u_id",$_COOKIE["user_info"]);
+            // $this->print_stuf($temp) ;
+            if($answer != false){
+                
+                $this->user_info = $answer;
+            }
+        }
     }
 
     public function user_site_initialize(){
@@ -23,8 +29,11 @@ class user_controller extends model
              }
         };
         if(isset($_REQUEST["log_out"])){
-            if(isset($_SESSION["user_info"])){
-                unset($_SESSION["user_info"]);
+            if(isset($_SESSION["user_info"]) || $_COOKIE["user_info"]){
+                $cookie_name ="user_info";
+             
+                // $this->print_stuf($_SESSION);
+                setcookie($cookie_name, "0", time() + (86400 * 30), "/"); // 86400 = 1 day
                 header("Location:http://localhost/clones/booking-site-02/public/sign-in");
             }
         };
@@ -36,12 +45,8 @@ class user_controller extends model
         
             $answer = $this->chack_user_exist("account","user_name",$user_name);
             if($answer != false){
-                $arr = array();
-                foreach ($answer as $key => $value) {
-                     $arr[$key]=$value;
-                    
-                }
-                $_SESSION["user_info"]=$arr;
+               
+                $_SESSION["user_info"]=$answer;
                 $this->user_header_footer_inbitwin("../view/site/user-page.php");
             }else{
                require_once("../view/site/no-page.php");

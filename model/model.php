@@ -44,13 +44,41 @@ class model
       $sqlex = "SELECT * FROM $table WHERE $key = '$mail'";
       $sql = $this->connection->query($sqlex);
       $answer = ($sql->num_rows > 0)? $sql->fetch_object() : false;
-      return $answer;
+      if($answer != false){
+        $arr = array();
+        foreach ($answer as $key => $value) {
+            $arr[$key]=$value;
+        };
+        return $arr;
+    }
    }
    public function print_stuf($stuf){
     echo "<pre>";
     print_r($stuf);
     echo "</pre>";
    }
+
+   protected function get_all_data($table_names_array){
+    $data = array();
+        foreach($table_names_array as $key => $value){
+            $sql = "select * from $value";
+            $sqlex = $this->connection->query($sql);
+            // $answer = ($sqlex->num_rows > 0)? $sqlex->fetch_all() : false;
+            if($sqlex->num_rows > 0){
+                $arr = array();
+                while ($a = $sqlex->fetch_object()) {
+                    foreach ($a as $key => $value) {
+                        $arr[$key]=$value;
+                    };
+                    array_push($data, $arr);
+                }
+                // $this->print_stuf($data);
+                // exit();
+            }
+        }
+    return $data;
+   }
+
 }
 
 
