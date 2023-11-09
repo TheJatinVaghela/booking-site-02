@@ -334,8 +334,9 @@
                                                     <?php echo ($available == 1)? '🟢' : '🔴';  ?>
                                                 </input>
                                             </li>
+                                            <input type="text" hidden name="last_page" value="<?php echo $_SERVER["PATH_INFO"]?>">
                                             <li class="header-button pr-0">
-                                                <button type="submit" name="movie_id" value="<?php echo $id?>" style="color:blue;">Add</button>
+                                                <button type="submit" name="movie_id" value="<?php echo $id?>" style="color:blue;">book ticket</button>
                                             </li>
                                         </ul>
                                     </div>

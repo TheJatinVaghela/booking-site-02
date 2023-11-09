@@ -79,6 +79,14 @@ class model
     return $data;
    }
 
+   protected function already_had_user(){
+    if(isset($_COOKIE["user_info"])){
+        if($_COOKIE["user_info"] != "0"){
+            $answer = $this->chack_user_exist("account","u_id",$_COOKIE["user_info"]);
+           return $answer;
+        }
+    };
+   }
 }
 
 

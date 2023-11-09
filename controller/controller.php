@@ -15,12 +15,7 @@ class controller extends model
     }
     
     protected function site_initialize(){
-        if(isset($_COOKIE["user_info"])){
-            if($_COOKIE["user_info"] != "0"){
-                $answer = $this->chack_user_exist("account","u_id",$_COOKIE["user_info"]);
-                $this->user_info = $answer;
-            }
-        };
+        $this->user_info = $this->already_had_user();
         if($_SERVER["PATH_INFO"] == "/home"){
             
             // $this->print_stuf($this->data_info);

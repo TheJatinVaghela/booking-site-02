@@ -6,15 +6,7 @@ class user_controller extends model
 
     public function __construct(){
         parent::__construct();
-        if(isset($_COOKIE["user_info"])){
-
-            $answer = $this->chack_user_exist("account","u_id",$_COOKIE["user_info"]);
-            // $this->print_stuf($temp) ;
-            if($answer != false){
-                
-                $this->user_info = $answer;
-            }
-        }
+       $this->user_info = $this->already_had_user();
     }
 
     public function user_site_initialize(){

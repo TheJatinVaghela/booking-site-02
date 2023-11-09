@@ -208,14 +208,14 @@
                 <div class="col-sm-10 col-md-8 col-lg-3">
                     <div class="widget-1 widget-banner">
                         <div class="widget-1-body">
-                            <a href="#0">
+                            <a href="">
                                 <img src="assets/images/sidebar/banner/banner01.jpg" alt="banner">
                             </a>
                         </div>
                     </div>
                     <div class="widget-1 widget-check">
                         <div class="widget-header">
-                            <h5 class="m-title">Filter By</h5> <a href="#0" class="clear-check">Clear All</a>
+                            <h5 class="m-title">Filter By</h5> <a href="" class="clear-check">Clear All</a>
                         </div>
                         <div class="widget-1-body">
                             <h6 class="subtitle">Language</h6>
@@ -256,7 +256,7 @@
                                 </div>
                             </div>
                             <div class="add-check-area">
-                                <a href="#0">view more <i class="plus"></i></a>
+                                <a href="">view more <i class="plus"></i></a>
                             </div>
                         </div>
                     </div>
@@ -296,13 +296,13 @@
                                 </div>
                             </div>
                             <div class="add-check-area">
-                                <a href="#0">view more <i class="plus"></i></a>
+                                <a href="">view more <i class="plus"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="widget-1 widget-banner">
                         <div class="widget-1-body">
-                            <a href="#0">
+                            <a href="">
                                 <img src="assets/images/sidebar/banner/banner02.jpg" alt="banner">
                             </a>
                         </div>
@@ -362,7 +362,7 @@
                                 $available = $value["available"];
                                 ?>
 
-                                 <form class="movie-list" method ="post">
+                                 <form action="movie-seats" class="movie-list" method="post">
                                         <div class="movie-thumb c-thumb">
                                                 <a >
                                                     <img src="<?php echo $this->assets.$img;?>" alt="movie">
@@ -374,12 +374,12 @@
                                             </h5>
                                             <p class="duration">2hrs 50 min</p>
                                             <div class="movie-tags">
-                                                <a href="#0">action</a>
-                                                <a href="#0">adventure</a>
-                                                <a href="#0">fantasy</a>
+                                                <a href="">action</a>
+                                                <a href="">adventure</a>
+                                                <a href="">fantasy</a>
                                             </div>
                                             <div class="release">
-                                                <span>Release Date : </span> <a href="#0"> November 8 , 2020</a>
+                                                <span>Release Date : </span> <a href=""> November 8 , 2020</a>
                                             </div>
                                             <ul class="movie-rating-percent">
                                                 <li>
@@ -403,22 +403,24 @@
                                             <div class="book-area">
                                                 <div class="book-ticket">
                                                     <div class="react-item">
-                                                        <a href="#0">
+                                                        <a href="">
                                                             <div class="thumb">
                                                                 <img src="assets/images/icons/heart.png" alt="icons">
                                                             </div>
                                                         </a>
                                                     </div>
                                                     <div class="react-item mr-auto">
-                                                        <a href="#0">
+                                                      
                                                             <div class="thumb">
                                                                 <img src="assets/images/icons/book.png" alt="icons">
                                                             </div>
-                                                            <buttion type="submit" name="movie_id" value=""><span>book ticket</span></buttion>
-                                                        </a>
+                                                            <input type="text" hidden name="last_page" value="<?php echo $_SERVER["PATH_INFO"]?>">
+                                                            <button type="submit" name="movie_id" value="<?php echo $id?>"
+                                                             style="width:50%; background-color:green; margin-left:.5rem;">book ticket</button>
+                                                      
                                                     </div>
                                                     <div class="react-item">
-                                                        <a href="#0" class="popup-video">
+                                                        <a href="" class="popup-video">
                                                             <div class="thumb">
                                                                 <img src="assets/images/icons/play-button.png" alt="icons">
                                                             </div>
@@ -439,13 +441,13 @@
                             </div> 
                         </div>
                         <div class="pagination-area text-center">
-                            <a href="#0"><i class="fas fa-angle-double-left"></i><span>Prev</span></a>
-                            <a href="#0">1</a>
-                            <a href="#0">2</a>
-                            <a href="#0" class="active">3</a>
-                            <a href="#0">4</a>
-                            <a href="#0">5</a>
-                            <a href="#0"><span>Next</span><i class="fas fa-angle-double-right"></i></a>
+                            <a href=""><i class="fas fa-angle-double-left"></i><span>Prev</span></a>
+                            <a href="">1</a>
+                            <a href="">2</a>
+                            <a href="" class="active">3</a>
+                            <a href="">4</a>
+                            <a href="">5</a>
+                            <a href=""><span>Next</span><i class="fas fa-angle-double-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -454,90 +456,4 @@
     </section>
     <!-- ==========Movie-Section========== -->
 
-    <!-- 
-
-                               <?php
-                                foreach ($this->data_info as $key => $value) { 
-                                    
-                                $id = $value["movie_id"];
-                                $name = $value["movie_name"];
-                                $tamato_rating = $value["movie_tomato_rating"];
-                                $box_office_rating = $value["movie_box_office_rating"];
-                                $img = $value["movie_img"];
-                                $available = $value["available"];
-                                ?>
-
-                                 <form class="movie-list" method ="post">
-                                        <div class="movie-thumb c-thumb">
-                                                <a >
-                                                    <img src="<?php echo $this->assets.$img;?>" alt="movie">
-                                                </a>
-                                        </div>
-                                        <div class="movie-content bg-one">
-                                            <h5 class="title">
-                                                <a href="movie-details.html"><?php echo $name;?></a>
-                                            </h5>
-                                            <p class="duration">2hrs 50 min</p>
-                                            <div class="movie-tags">
-                                                <a href="#0">action</a>
-                                                <a href="#0">adventure</a>
-                                                <a href="#0">fantasy</a>
-                                            </div>
-                                            <div class="release">
-                                                <span>Release Date : </span> <a href="#0"> November 8 , 2020</a>
-                                            </div>
-                                            <ul class="movie-rating-percent">
-                                                <li>
-                                                    <div class="thumb">
-                                                        <img src="assets/images/movie/tomato.png" alt="movie">
-                                                    </div>
-                                                    <span class="content"><?php echo $tamato_rating;?></span>
-                                                </li>
-                                                <li>
-                                                    <div class="thumb">
-                                                        <img src="assets/images/movie/cake.png" alt="movie">
-                                                    </div>
-                                                    <span class="content"><?php echo $box_office_rating;?></span>
-                                                </li>
-                                                <li class="header-button pr-0">
-                                                <input type="text" disabled name="available" value="<?php echo $available?>" style="color:green; border:none; display:contents;">
-                                                    <?php echo ($available == 1)? '🟢' : '🔴';  ?>
-                                                </input>
-                                            </li>
-                                            </ul>
-                                            <div class="book-area">
-                                                <div class="book-ticket">
-                                                    <div class="react-item">
-                                                        <a href="#0">
-                                                            <div class="thumb">
-                                                                <img src="assets/images/icons/heart.png" alt="icons">
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="react-item mr-auto">
-                                                        <a href="#0">
-                                                            <div class="thumb">
-                                                                <img src="assets/images/icons/book.png" alt="icons">
-                                                            </div>
-                                                            <buttion type="submit" name="movie_id" value=""><span>book ticket</span></buttion>
-                                                        </a>
-                                                    </div>
-                                                    <div class="react-item">
-                                                        <a href="#0" class="popup-video">
-                                                            <div class="thumb">
-                                                                <img src="assets/images/icons/play-button.png" alt="icons">
-                                                            </div>
-                                                            <span>watch trailer</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                </form>
-                                
-                            <?php 
-                                } 
-                            ?>
-                    
-
-     -->
+    
