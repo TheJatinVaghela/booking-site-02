@@ -2,6 +2,7 @@
 require_once("../model/model.php");
 require_once("../controller/login-controller.php");
 require_once("../controller/user-controller.php");
+require_once("../controller/movie-seats-controller.php");
 class controller extends model 
 {   
     public $user_info;
@@ -15,10 +16,8 @@ class controller extends model
     protected function site_initialize(){
         if(isset($_SESSION["user_info"])){
              $this->user_info = $_SESSION["user_info"];
-        }
+        };
         if($_SERVER["PATH_INFO"] == "/home"){
-            
-            
             // $this->print_stuf($this->user_info["user_name"]);
             $this->header_footer_inbitwin("../view/site/home.php");
         }
@@ -26,6 +25,10 @@ class controller extends model
             $login = new login_controller();
             $login->login_site_initialize();
            
+        }
+        else if($_SERVER["PATH_INFO"] == "/movie-seats"){
+            $movie_steats = new movie_steats_controller();
+            $movie_steats->movie_steat_initialize();
         }
         else if($_SERVER["PATH_INFO"] = "/user"){
             $user = new user_controller();

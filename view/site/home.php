@@ -289,23 +289,23 @@
                             <a class="view-all" href="movie-grid.html">View All</a>
                         </div>
                         <div class="row mb-30-none justify-content-center">
-                            <div class="col-sm-6 col-lg-4">
+                            <form class="col-sm-6 col-lg-4" action="movie-seats" method="post">
                                 <div class="movie-grid">
                                     <div class="movie-thumb c-thumb">
-                                        <a href="#0">
+                                        <a >
                                             <img src="<?php echo $this->assets;?>images/movie/movie01.jpg" alt="movie">
                                         </a>
                                     </div>
                                     <div class="movie-content bg-one">
                                         <h5 class="title m-0">
-                                            <a href="#0">alone</a>
+                                            <a name="movie_name" value="alone">alone</a>
                                         </h5>
                                         <ul class="movie-rating-percent">
                                             <li>
                                                 <div class="thumb">
                                                     <img src="<?php echo $this->assets;?>images/movie/tomato.png" alt="movie">
                                                 </div>
-                                                <span class="content">88%</span>
+                                                <span class="content" >88%</span>
                                             </li>
                                             <li>
                                                 <div class="thumb">
@@ -313,10 +313,13 @@
                                                 </div>
                                                 <span class="content">88%</span>
                                             </li>
+                                            <li class="header-button pr-0">
+                                                <button type="submit" name="movie_id" value="1" style="color:blue;">Add</button>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                             <div class="col-sm-6 col-lg-4">
                                 <div class="movie-grid">
                                     <div class="movie-thumb c-thumb">
