@@ -26,12 +26,16 @@
                     </a>
                 </div>
                 <div class="item date-item">
-                    <span class="date">MON, SEP 09 2020</span>
                     <select class="select-bar">
-                        <option value="sc1">09:40</option>
-                        <option value="sc2">13:45</option>
-                        <option value="sc3">15:45</option>
-                        <option value="sc4">19:50</option>
+                        <?php 
+                        echo $this->data_info; //2023-09-09 09:30:00 year-month-day hour-minit-second
+                        $date = explode(",",$this->data_info[0]["dates"]);
+                       
+                        foreach($date as $key => $value){ ?>
+                            
+                            <option value="<?php echo 'src'.$key?>"><?php echo $value;?></option>
+                      <?php  };
+                        ?>
                     </select>
                 </div>
               
@@ -56,55 +60,69 @@
                             <ul class="seat--area">
                                 <li class="front-seat">
                                     <ul>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
+                                        <li class="single-seat seat-free border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="G-0" id="G-0" value="yes"/>
+                                            <label for="G-0">G-0</label>
                                         </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
+                                        <li class="single-seat seat-free border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="G-1" id="G-1" value="yes"/>
+                                            <label for="G-1">G-1</label>
                                         </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
+                                        <li class="single-seat seat-free border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="G-2" id="G-2" value="yes"/>
+                                            <label for="G-2">G-2</label>
                                         </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="front-seat">
-                                    <ul>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
+                                        <li class="single-seat seat-free border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="G-3" id="G-3" value="yes"/>
+                                            <label for="G-3">G-3</label>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="front-seat">
                                     <ul>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
+                                        <li class="single-seat seat-free border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="G-4" id="G-4" value="yes"/>
+                                            <label for="G-4">G-4</label>
                                         </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
+                                        <li class="single-seat seat-free border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="G-5" id="G-5" value="yes"/>
+                                            <label for="G-5">G-5</label>
                                         </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
+                                        <li class="single-seat seat-free border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="G-6" id="G-6" value="yes"/>
+                                            <label for="G-6">G-6</label>
                                         </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
+                                        <li class="single-seat seat-free border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="G-7" id="G-7" value="yes"/>
+                                            <label for="G-7">G-7</label>
+                                        </li>
+                                        <li class="single-seat seat-free border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="G-8" id="G-8" value="yes"/>
+                                            <label for="G-8">G-8</label>
+                                        </li>
+                                        <li class="single-seat seat-free border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="G-9" id="G-9" value="yes"/>
+                                            <label for="G-9">G-9</label>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="front-seat">
+                                    <ul>
+                                        <li class="single-seat seat-free border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="G-10" id="G-10" value="yes"/>
+                                            <label for="G-10">G-10</label>
+                                        </li>
+                                        <li class="single-seat seat-free border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="G-11" id="G-11" value="yes"/>
+                                            <label for="G-11">G-11</label>
+                                        </li>
+                                        <li class="single-seat seat-free border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="G-12" id="G-12" value="yes"/>
+                                            <label for="G-12">G-12</label>
+                                        </li>
+                                        <li class="single-seat seat-free border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="G-13" id="G-13" value="yes"/>
+                                            <label for="G-13">G-13</label>
                                         </li>
                                     </ul>
                                 </li>
@@ -116,60 +134,69 @@
                             <ul class="seat--area">
                                 <li class="front-seat">
                                     <ul>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
+                                        <li class="single-seat seat-free border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="F-0" id="F-0" value="yes"/>
+                                            <label for="F-0">F-0</label>
                                         </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
+                                        <li class="single-seat seat-free border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="F-1" id="F-1" value="yes"/>
+                                            <label for="F-1">F-1</label>
                                         </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
+                                        <li class="single-seat seat-free border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="F-2" id="F-2" value="yes"/>
+                                            <label for="F-2">F-2</label>
                                         </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="front-seat">
-                                    <ul>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat seat-free" type="redio"  name="no">
-                                            <img src="assets/images/movie/seat01-free.png" alt="seat">
-                                            <span class="sit-num" >f7</span>
-                                        </li>
-                                        <li class="single-seat seat-free" type="redio" name="no"> 
-                                            <img src="assets/images/movie/seat01-free.png" alt="seat">
-                                            <span class="sit-num">f8</span>
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
+                                        <li class="single-seat seat-free border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="F-3" id="F-3" value="yes"/>
+                                            <label for="F-3">F-3</label>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="front-seat">
                                     <ul>
-                                        <li class="single-seat seat-free" type="redio" name="no">
-                                            <img src="assets/images/movie/seat01-free.png" alt="seat">
-                                            <span class="sit-num">f9</span>
+                                        <li class="single-seat seat-free border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="F-4" id="F-4" value="yes"/>
+                                            <label for="F-4">F-4</label>
                                         </li>
-                                        <li class="single-seat seat-free" type="redio" name="no">
-                                            <img src="assets/images/movie/seat01-free.png" alt="seat">
-                                            <span class="sit-num">f10</span>
+                                        <li class="single-seat seat-free border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="F-5" id="F-5" value="yes"/>
+                                            <label for="F-5">F-5</label>
                                         </li>
-                                        <li class="single-seat seat-free" type="redio" name="no">
-                                            <img src="assets/images/movie/seat01-free.png" alt="seat">
-                                            <span class="sit-num">f11</span>
+                                        <li class="single-seat seat-free border border-primary" type="redio" name="no"> 
+                                            <input type="checkbox" name="F-6" id="F-6" value="yes"/>
+                                            <label for="F-6">F-6</label>
                                         </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat01.png" alt="seat">
+                                        <li class="single-seat seat-free border border-primary" type="redio" name="no"> 
+                                            <input type="checkbox" name="F-7" id="F-7" value="yes"/>
+                                            <label for="F-7">F-7</label>
+                                        </li>
+                                        <li class="single-seat seat-free border border-primary" type="redio" name="no"> 
+                                            <input type="checkbox" name="F-8" id="F-8" value="yes"/>
+                                            <label for="F-8">F-8</label>
+                                        </li>
+                                        <li class="single-seat seat-free border border-primary" type="redio" name="no"> 
+                                            <input type="checkbox" name="F-9" id="F-9" value="yes"/>
+                                            <label for="F-9">F-9</label>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="front-seat">
+                                    <ul>
+                                        <li class="single-seat seat-free border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="F-10" id="F-10" value="yes"/>
+                                            <label for="F-10">F-10</label>
+                                        </li>
+                                        <li class="single-seat seat-free border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="F-11" id="F-11" value="yes"/>
+                                            <label for="F-11">F-11</label>
+                                        </li>
+                                        <li class="single-seat seat-free border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="F-12" id="F-12" value="yes"/>
+                                            <label for="F-12">F-12</label>
+                                        </li>
+                                        <li class="single-seat seat-free border border-primary" type="redio" name="no"> 
+                                            <input type="checkbox" name="F-13" id="F-13" value="yes"/>
+                                            <label for="F-13">F-13</label>
                                         </li>
                                     </ul>
                                 </li>
@@ -186,34 +213,37 @@
                             <ul class="seat--area">
                                 <li class="front-seat">
                                     <ul>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="E-0" id="E-0" value="yes"/>
+                                            <label for="E-0">E-0</label>
                                         </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="front-seat">
-                                    <ul>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="E-1" id="E-1" value="yes"/>
+                                            <label for="E-1">E-1</label>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="front-seat">
                                     <ul>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="E-2" id="E-2" value="yes"/>
+                                            <label for="E-2">E-2</label>
                                         </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="E-3" id="E-3" value="yes"/>
+                                            <label for="E-3">E-3</label>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="front-seat">
+                                    <ul>
+                                         <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="E-4" id="E-4" value="yes"/>
+                                            <label for="E-4">E-4</label>
+                                        </li>
+                                         <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="E-5" id="E-5" value="yes"/>
+                                            <label for="E-5">E-5</label>
                                         </li>
                                     </ul>
                                 </li>
@@ -225,35 +255,45 @@
                             <ul class="seat--area">
                                 <li class="front-seat">
                                     <ul>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="D-0" id="D-0" value="yes"/>
+                                            <label for="D-0">D-0</label>
                                         </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="front-seat">
-                                    <ul>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat seat-free-two" type="redio" name="no">
-                                            <img src="assets/images/movie/seat02-free.png" alt="seat">
-                                            <span class="sit-num">D7 D8</span>
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="D-1" id="D-1" value="yes"/>
+                                            <label for="D-1">D-1</label>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="front-seat">
                                     <ul>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="D-2" id="D-2" value="yes"/>
+                                            <label for="D-2">D-2</label>
                                         </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="D-3" id="D-3" value="yes"/>
+                                            <label for="D-3">D-3</label>
+                                        </li>
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="D-4" id="D-4" value="yes"/>
+                                            <label for="D-4">D-4</label>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="front-seat">
+                                    <ul>
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="D-5" id="D-5" value="yes"/>
+                                            <label for="D-5">D-5</label>
+                                        </li>
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="D-6" id="D-6" value="yes"/>
+                                            <label for="D-6">D-6</label>
+                                        </li>
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="D-7" id="D-7" value="yes"/>
+                                            <label for="D-7">D-7</label>
                                         </li>
                                     </ul>
                                 </li>
@@ -265,35 +305,49 @@
                             <ul class="seat--area">
                                 <li class="front-seat">
                                     <ul>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
+                                        <li class="single-seat seat-free-two border border-primary" name="no" type="redio">
+                                            <input type="checkbox" name="F-0" id="F-0" value="yes"/>
+                                            <label for="F-0">F-0</label>
                                         </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="front-seat">
-                                    <ul>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
+                                        <li class="single-seat seat-free-two border border-primary" name="no" type="redio">
+                                            <input type="checkbox" name="F-1" id="F-1" value="yes"/>
+                                            <label for="F-1">F-1</label>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="front-seat">
                                     <ul>
-                                        <li class="single-seat seat-free-two" name="no" type="redio">
-                                            <img src="assets/images/movie/seat02-free.png" alt="seat" >
-                                            <span class="sit-num">f11 f12</span>
+                                        <li class="single-seat seat-free-two border border-primary" name="no" type="redio">
+                                            <input type="checkbox" name="F-2" id="F-2" value="yes"/>
+                                            <label for="F-2">F-2</label>
                                         </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
+                                        <li class="single-seat seat-free-two border border-primary" name="no" type="redio">
+                                            <input type="checkbox" name="F-3" id="F-3" value="yes"/>
+                                            <label for="F-3">F-3</label>
+                                        </li>
+                                        <li class="single-seat seat-free-two border border-primary" name="no" type="redio">
+                                            <input type="checkbox" name="F-4" id="F-4" value="yes"/>
+                                            <label for="F-4">F-4</label>
+                                        </li>
+                                        <li class="single-seat seat-free-two border border-primary" name="no" type="redio">
+                                            <input type="checkbox" name="F-5" id="F-5" value="yes"/>
+                                            <label for="F-5">F-5</label>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="front-seat">
+                                    <ul>
+                                        <li class="single-seat seat-free-two border border-primary" name="no" type="redio">
+                                            <input type="checkbox" name="F-6" id="F-6" value="yes"/>
+                                            <label for="F-6">F-6</label>
+                                        </li>
+                                        <li class="single-seat seat-free-two border border-primary" name="no" type="redio">
+                                            <input type="checkbox" name="F-7" id="F-7" value="yes"/>
+                                            <label for="F-7">F-7</label>
+                                        </li>
+                                        <li class="single-seat seat-free-two border border-primary" name="no" type="redio">
+                                            <input type="checkbox" name="F-8" id="F-8" value="yes"/>
+                                            <label for="F-8">F-8</label>
                                         </li>
                                     </ul>
                                 </li>
@@ -305,35 +359,49 @@
                             <ul class="seat--area">
                                 <li class="front-seat">
                                     <ul>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="B-0" id="B-0" value="yes"/>
+                                            <label for="B-0">B-0</label>
                                         </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="front-seat">
-                                    <ul>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
-                                        </li>
-                                        <li class="single-seat seat-free-two" type="redio" name="no">
-                                            <img src="assets/images/movie/seat02-free.png" alt="seat">
-                                            <span class="sit-num">b7 b8</span>
-                                        </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="B-1" id="B-1" value="yes"/>
+                                            <label for="B-1">B-1</label>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="front-seat">
                                     <ul>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="B-2" id="B-2" value="yes"/>
+                                            <label for="B-2">B-2</label>
                                         </li>
-                                        <li class="single-seat">
-                                            <img src="assets/images/movie/seat02.png" alt="seat">
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="B-3" id="B-3" value="yes"/>
+                                            <label for="B-3">B-3</label>
+                                        </li>
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="B-4" id="B-4" value="yes"/>
+                                            <label for="B-4">B-4</label>
+                                        </li>
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="B-5" id="B-5" value="yes"/>
+                                            <label for="B-5">B-5</label>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="front-seat">
+                                    <ul>
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="B-6" id="B-6" value="yes"/>
+                                            <label for="B-6">B-6</label>
+                                        </li>
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="B-7" id="B-7" value="yes"/>
+                                            <label for="B-7">B-7</label>
+                                        </li>
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="B-8" id="B-8" value="yes"/>
+                                            <label for="B-8">B-8</label>
                                         </li>
                                     </ul>
                                 </li>
@@ -345,42 +413,47 @@
                             <ul class="seat--area">
                                 <li class="front-seat">
                                     <ul>
-                                        <li class="single-seat seat-free-two" type="redio" name="no">
-                                            <img src="assets/images/movie/seat02-free.png" alt="seat">
-                                            <span class="sit-num">a1 a2</span>
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="A-1" id="A-1" value="yes"/>
+                                            <label for="A-1">A-1</label>
                                         </li>
-                                        <li class="single-seat seat-free-two" type="redio" name="no">
-                                            <img src="assets/images/movie/seat02-free.png" alt="seat">
-                                            <span class="sit-num">a3 a4</span>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="front-seat">
-                                    <ul>
-                                        <li class="single-seat seat-free-two" type="redio" name="no">
-                                            <img src="assets/images/movie/seat02-free.png" alt="seat">
-                                            <span class="sit-num">a5 a6</span>
-                                        </li>
-                                        <li class="single-seat seat-free-two" type="redio" name="no">
-                                            <img src="assets/images/movie/seat02-free.png" alt="seat">
-                                            <span class="sit-num">a7 a8</span>
-                                        </li>
-                                        <li class="single-seat seat-free-two" type="redio" name="no">
-                                            <img src="assets/images/movie/seat02-free.png" alt="seat">
-                                            <span class="sit-num">a7 a8</span>
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="A-2" id="A-2" value="yes"/>
+                                            <label for="A-2">A-2</label>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="front-seat">
                                     <ul>
-                                        <li class="single-seat seat-free-two" type="redio" name="no">
-                                            <img src="assets/images/movie/seat02-free.png" alt="seat">
-                                            <span class="sit-num">a11</span>
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="A-3" id="A-3" value="yes"/>
+                                            <label for="A-3">A-3</label>
+                                        </li>
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="A-4" id="A-4" value="yes"/>
+                                            <label for="A-4">A-4</label>
+                                        </li>
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="A-5" id="A-5" value="yes"/>
+                                            <label for="A-5">A-5</label>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="front-seat">
+                                    <ul>
+                                        <li class="single-seat seat-free-two border border-primary" type="redio" name="no">
+                                            <input type="checkbox" name="A-6" id="A-6" value="yes"/>
+                                            <label for="A-6">A-6</label>
                                         </li>
                                        
-                                        <li class="single-seat seat-free-two" type="redio"  name="no">
-                                            <img src="assets/images/movie/seat02-free.png" alt="seat">
-                                            <span class="sit-num">a12</span>
+                                        <li class="single-seat seat-free-two border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="A-7" id="A-7" value="yes"/>
+                                            <label for="A-7">A-7</label>
+                                        </li>
+
+                                        <li class="single-seat seat-free-two border border-primary" type="redio"  name="no">
+                                            <input type="checkbox" name="A-8" id="A-8" value="yes"/>
+                                            <label for="A-8">A-8</label>
                                         </li>
                                             
                                         
@@ -403,7 +476,7 @@
     </div>
 
     <script>
-        const book_seats = document.getElementById("book_seats");
+       /* const book_seats = document.getElementById("book_seats");
         // const seats_wrapper = document.getElementById("seats_wrapper");
 
         book_seats.onclick = function(event){
@@ -425,7 +498,7 @@
                 console.log(e.getAttribute('value'));
                 
             }
-        });
+        });*/
         
     </script>
     <!-- ==========Movie-Section========== -->

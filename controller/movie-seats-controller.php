@@ -4,9 +4,10 @@ require_once("../model/model.php");
 class movie_steats_controller extends model
 {
     public $user_info;
+    public $data_info;
     public function __construct(){
         parent::__construct();
-
+        $this->data_info = $this->get_all_data(["movie_list"=>"movie_list"]);
         $this->user_info = $this->already_had_user();
     }
 
@@ -18,10 +19,16 @@ class movie_steats_controller extends model
             // return;
         };
         if(isset($_REQUEST["movie_id"])){
-            $this->print_stuf($_REQUEST);
-            $this->print_stuf($_REQUEST["last_page"]);
-        }
-            $this->user_header_footer_inbitwin("../view/site/movie-seats.php");
+             $this->print_stuf($_REQUEST);
+             $this->print_stuf($_REQUEST["last_page"]);
+            // substr($date,0,1);
+            $date = explode(",",$this->data_info[0]["dates"]);
+            $d = DateTime::createFromFormat ('Y-m-d H:i:s', $date[0]);
+                        echo "DDDD";
+                        $this->print_stuf( $d);
+        };
+        $this->print_stuf($this->data_info[0]["dates"]) ;
+        $this->user_header_footer_inbitwin("../view/site/movie-seats.php");
     }
 
     protected function user_header_footer_inbitwin($site){
