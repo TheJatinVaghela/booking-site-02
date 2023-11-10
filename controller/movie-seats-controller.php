@@ -6,6 +6,7 @@ class movie_steats_controller extends model
     public $user_info;
     public $data_info;
     public $date;
+    public $seat_info;
     public function __construct(){
         parent::__construct();
         $this->data_info = $this->get_all_data(["movie_list"=>"movie_list"]);
@@ -30,8 +31,8 @@ class movie_steats_controller extends model
         };
         if(isset($_REQUEST["DATETIME"])){
           $datetime = $this->date[$_REQUEST['datetime']];
-            $this->print_stuf($datetime);
-            $this->seat_check("seats",$datetime);
+            $this->print_stuf($_REQUEST);
+            $this->seat_info = $this->seat_check("seats",$datetime);
         };
         // $this->print_stuf($this->data_info[0]["dates"]) ;
         $this->user_header_footer_inbitwin("../view/site/movie-seats.php");

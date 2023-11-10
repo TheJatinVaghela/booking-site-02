@@ -58,20 +58,26 @@ class model
     echo "</pre>";
    }
 
+   public function jatin_fetch_object($sqlex){
+        $data = array();
+        $arr = array();
+        while ($a = $sqlex->fetch_object()) {
+            foreach ($a as $key => $value) {
+                $arr[$key]=$value;
+            };
+            array_push($data, $arr);
+        };
+        return $data;
+   }
+
    protected function get_all_data($table_names_array){
-    $data = array();
+   
         foreach($table_names_array as $key => $value){
             $sql = "select * from $value";
             $sqlex = $this->connection->query($sql);
             // $answer = ($sqlex->num_rows > 0)? $sqlex->fetch_all() : false;
             if($sqlex->num_rows > 0){
-                $arr = array();
-                while ($a = $sqlex->fetch_object()) {
-                    foreach ($a as $key => $value) {
-                        $arr[$key]=$value;
-                    };
-                    array_push($data, $arr);
-                }
+                $data = $this->jatin_fetch_object($sqlex);
                 // $this->print_stuf($data);
                 // exit();
             }
@@ -102,10 +108,15 @@ class model
 
     protected function seat_check($table , $key){
         $key = trim($key);
-        $sql = "SELECT * FROM $table WHERE `$key`= 1"; // ( ` ) = 🟢 | ( ' ) = 🔴
+        $sql = "SELECT `seat`,`$key` FROM $table WHERE `$key`= 1"; // ( ` ) = 🟢 | ( ' ) = 🔴
         $sqlex = $this->connection->query($sql);
-        $data = $sqlex->fetch_all();
-        $this->print_stuf($data);
+        // $this->print_stuf($sqlex);
+        if ($sqlex->num_rows > 0) {
+            $data = $this->jatin_fetch_object($sqlex);
+            // $this->print_stuf($data);
+             return $data; 
+        };
+        return "null"; 
     }
 
 }

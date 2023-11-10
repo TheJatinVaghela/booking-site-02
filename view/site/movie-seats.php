@@ -1,3 +1,24 @@
+  <?php 
+    echo '<pre>';
+    print_r($this->seat_info);
+    echo '</pre>';
+if($this->seat_info != "null"){
+    foreach ($this->seat_info as $key => $value) {
+        foreach ($value as $key2 => $value2) { 
+            if($key2 === 'seat'){ ?>
+            <style>
+            <?php echo "#".$value2."{
+                display:none;
+                }"; ?>
+            </style>
+          <?php 
+            }
+        } 
+    }
+};
+  ?>
+
+  
   <!-- ==========Banner-Section========== -->
   <section class="details-banner hero-area bg_img seat-plan-banner" data-background="assets/images/banner/banner04.jpg">
       <div class="container">
