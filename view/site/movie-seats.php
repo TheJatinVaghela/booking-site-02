@@ -2,8 +2,9 @@
     echo '<pre>';
     print_r($this->seat_info);
     echo '</pre>';
-if($this->seat_info != "null"){
-    foreach ($this->seat_info as $key => $value) {
+if($this->seat_info !== "No"){
+    $seat_info = $this->seat_info;
+    foreach ($seat_info as $key => $value) {
         foreach ($value as $key2 => $value2) { 
             if($key2 === 'seat'){ ?>
             <style>
@@ -56,7 +57,7 @@ if($this->seat_info != "null"){
 
                                 foreach ($this->date as $key => $value) { ?>
 
-                                  <option value="<?php echo $key ?>"><?php echo $value; ?></option>
+                                  <option value="<?php echo $key ?>" <?php if($this->datetime == $value){echo "selected";}?>><?php echo $value; ?></option>
                               <?php
                                 };
                                 ?>

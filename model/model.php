@@ -3,6 +3,7 @@
 class model 
 {
     private $connection;
+    protected $get_data;
     public $assets = "http://localhost/clones\booking-site-02\public\assets/"; 
     public function __construct(){
 
@@ -82,6 +83,7 @@ class model
                 // exit();
             }
         }
+        $this->get_data = $data;
     return $data;
    }
 
@@ -107,16 +109,21 @@ class model
     }
 
     protected function seat_check($table , $key){
+        if($key === "" || $key === null){
+            $this->print_stuf("MODEL");
+            $key =  explode(",",$this->get_data[0]["dates"])[0];
+        };
         $key = trim($key);
+        $this->print_stuf($key);
         $sql = "SELECT `seat`,`$key` FROM $table WHERE `$key`= 1"; // ( ` ) = 🟢 | ( ' ) = 🔴
         $sqlex = $this->connection->query($sql);
-        // $this->print_stuf($sqlex);
+         $this->print_stuf($sqlex);
         if ($sqlex->num_rows > 0) {
             $data = $this->jatin_fetch_object($sqlex);
-            // $this->print_stuf($data);
+             $this->print_stuf($data);
              return $data; 
         };
-        return "null"; 
+        return "No"; 
     }
 
 }
