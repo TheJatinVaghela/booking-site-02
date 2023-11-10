@@ -87,7 +87,29 @@ class model
         }
     };
    }
+
+   protected function seat_add(){
+    $arr = ['G-0','G-1','G-2','G-3','G-4','G-5','G-6','G-7','G-8','G-9','G-1','G-1','G-1','G-1','F-0','F-1','F-2','F-3','F-4','F-5','F-6','F-7','F-8',
+            'F-9','F-1','F-1','F-1','F-1','E-0','E-1','E-2','E-3','E-4','E-5','D-0','D-1','D-2','D-3','D-4','D-5','D-6','D-7','C-0','C-1','C-2','C-3',
+            'C-4','C-5','C-6','C-7','C-8','B-0','B-1','B-2','B-3','B-4','B-5','B-6','B-7','B-8','A-1','A-2','A-3','A-4','A-5','A-6','A-7','A-8' ];
+   
+    $sql = "INSERT INTO seats (seat) VALUES (";
+    foreach ($arr as $key => $value) {
+        $sql .= "'$value'), (";
+    };
+    $this->print_stuf($sql);
+    }
+
+    protected function seat_check($table , $key){
+        $key = trim($key);
+        $sql = "SELECT * FROM $table WHERE `$key`= 1"; // ( ` ) = 🟢 | ( ' ) = 🔴
+        $sqlex = $this->connection->query($sql);
+        $data = $sqlex->fetch_all();
+        $this->print_stuf($data);
+    }
+
 }
+
 
 
 ?>
