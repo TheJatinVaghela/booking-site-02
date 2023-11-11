@@ -1,6 +1,6 @@
   <?php 
     echo '<pre>';
-    print_r($this->seat_info);
+    // print_r($this->seat_info);
     echo '</pre>';
 if($this->seat_info !== "No"){
     $seat_info = $this->seat_info;

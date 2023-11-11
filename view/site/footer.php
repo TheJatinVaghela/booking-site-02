@@ -1,3 +1,12 @@
+    <style>
+        .social-icons li a{
+            display: flex;
+            /* flex-direction: row; */
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    
     <!-- ==========Newslater-Section========== -->
     <footer class="footer-section">
         <div class="newslater-section padding-bottom">
