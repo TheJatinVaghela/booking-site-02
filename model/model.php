@@ -16,6 +16,7 @@ class model
         } catch (\Throwable $th) {
            echo $th->getMessage();
         }
+        // $this->seat_add();
     }
 
    protected function add_account($table , $data){

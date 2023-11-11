@@ -53,16 +53,19 @@ if($this->seat_info !== "No"){
                           <select class="select-bar" name="datetime">
                               <?php
                                 echo $this->date; //2023-09-09 09:30:00 year-month-day hour-minit-second
-
-
-                                foreach ($this->date as $key => $value) { ?>
-
-                                  <option value="<?php echo $key ?>" <?php if($this->datetime == $value){echo "selected";}?>><?php echo $value; ?></option>
-                              <?php
-                                };
+                                if($this->date != ""){
+                                    foreach ($this->date as $key => $value) { ?>
+                                        <option value="<?php echo $key ?>" <?php if($this->datetime == $value){echo "selected";}?>><?php echo $value; ?></option>
+                                    <?php
+                                    }
+                                }else{ ?>
+                                    <option value="<?php echo $key ?>" <?php echo "selected";?>><?php echo "Comming Soon"; ?></option>
+                               <?php };
                                 ?>
                           </select>
+                          <?php if($this->date != ""){?>
                           <input type="submit" class="custom-button" name="DATETIME" value="check" id="" />
+                          <?php };?>
                       </form>
                   </div>
 
@@ -74,6 +77,7 @@ if($this->seat_info !== "No"){
       <!-- ==========Movie-Section========== -->
       <div class="seat-plan-section padding-bottom padding-top">
           <div class="container">
+            <?php if($this->date != ""){?>
               <div class="screen-area" id="seats_wrapper">
                   <h4 class="screen">screen</h4>
                   <div class="screen-thumb">
@@ -500,6 +504,7 @@ if($this->seat_info !== "No"){
                   </div>
               </div>
           </div>
+          <?php };?>
       </div>
 
       <script>

@@ -13,8 +13,8 @@ class movie_steats_controller extends model
         parent::__construct();
         $this->data_info = $this->get_all_data(["movie_list"=>"movie_list"]);
         $this->user_info = $this->already_had_user();
-        $this->date = explode(",",$this->data_info[0]["dates"]);
-        $this->print_stuf(explode(",",$this->get_data[0]["dates"])[0]);
+        // $this->date = explode(",",$this->data_info[0]["dates"]);
+        // $this->print_stuf(explode(",",$this->get_data[0]["dates"])[0]);
         // $d = DateTime::createFromFormat ('Y-m-d H:i:s', $date[0]);
         // echo "Date:-";
         // $this->print_stuf( $d);
@@ -29,7 +29,15 @@ class movie_steats_controller extends model
         };
         if(isset($_REQUEST["movie_id"])){
              $this->print_stuf($_REQUEST);
-             $this->print_stuf($_REQUEST["last_page"]);
+             $this->date = explode(",",$this->chack_user_exist("movie_list","movie_id",$_REQUEST["movie_id"])["dates"]);
+             if($this->date != ""){
+                 
+                 $this->print_stuf("Date-yes");
+                }else{
+                $this->print_stuf("Date-no");
+
+            }
+            //  $this->print_stuf($_REQUEST["last_page"]);
             // substr($date,0,1);
         };
         if(isset($_REQUEST["DATETIME"])){
