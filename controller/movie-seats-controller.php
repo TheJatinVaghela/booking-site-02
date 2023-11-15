@@ -28,13 +28,13 @@ class movie_steats_controller extends model
             // return;
         };
         if(isset($_REQUEST["movie_id"])){
-             $this->print_stuf($_REQUEST);
+            //  $this->print_stuf($_REQUEST);
              $this->date = explode(",",$this->chack_user_exist("movie_list","movie_id",$_REQUEST["movie_id"])["dates"]);
              if($this->date != ""){
                  
-                 $this->print_stuf("Date-yes");
+                //  $this->print_stuf("Date-yes");
                 }else{
-                $this->print_stuf("Date-no");
+                // $this->print_stuf("Date-no");
 
             }
             //  $this->print_stuf($_REQUEST["last_page"]);
@@ -42,11 +42,31 @@ class movie_steats_controller extends model
         };
         if(isset($_REQUEST["DATETIME"])){
             $this->datetime = $this->date[$_REQUEST['datetime']];
-            $this->print_stuf($_REQUEST);
+            // $this->print_stuf($_REQUEST);
             $this->seat_info = $this->seat_check("seats",$this->datetime);
         }else{
 
             $this->seat_info = $this->seat_check("seats",null);
+        };
+        if(isset($_REQUEST["proceed"])){
+             $this->print_stuf($_REQUEST);
+             $seat_selected_arr = array();
+             $movie_id = $_REQUEST["movie_id"];
+             $datetime = $_REQUEST["datetime"];
+             array_shift($_REQUEST);
+             array_shift($_REQUEST);
+             array_shift($_REQUEST);
+             array_pop($_REQUEST);
+             $seat_selected_arr = $_REQUEST;
+             $chack_movie_datetime_answer = $this->chack_movie_id_datetime("movie_list",$movie_id,$datetime);
+             if($chack_movie_datetime_answer !== false){
+                $this->print_stuf($chack_movie_datetime_answer);
+                $chack_seat_empty_answer = $this->chack_seat_empty("seats",$chack_movie_datetime_answer["datetime_value"],$seat_selected_arr); 
+                if($chack_seat_empty_answer !== false){
+                    $this->Add_chack_bookedseat_toUser("account","bookedseat","u_id",$movie_id,$datetime,$seat_selected_arr);
+                }
+             };
+            //  $this->Add_chack_bookedseat_toUser("account","bookedseat","u_id",$movie_id,$datetime,$seat_selected_arr);
         }
         // $this->print_stuf($this->data_info[0]["dates"]) ;
         $this->user_header_footer_inbitwin("../view/site/movie-seats.php");

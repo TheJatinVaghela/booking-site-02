@@ -1,7 +1,7 @@
   <?php 
-    echo '<pre>';
+    // echo '<pre>';
     // print_r($this->seat_info);
-    echo '</pre>';
+    // echo '</pre>';
 if($this->seat_info !== "No"){
     $seat_info = $this->seat_info;
     foreach ($seat_info as $key => $value) {
@@ -48,11 +48,11 @@ if($this->seat_info !== "No"){
                       </a>
                   </div>
                   <div class="item date-item flex-nowrap">
-                      <form action="" method="post">
+                      <!-- <form action="" method="post"> -->
                           <input type="text" name="movie_id" value="<?php echo $_REQUEST["movie_id"]; ?>" id="" hidden>
                           <select class="select-bar" name="datetime">
                               <?php
-                                echo $this->date; //2023-09-09 09:30:00 year-month-day hour-minit-second
+                                // echo $this->date; //2023-09-09 09:30:00 year-month-day hour-minit-second
                                 if($this->date != ""){
                                     foreach ($this->date as $key => $value) { ?>
                                         <option value="<?php echo $key ?>" <?php if($this->datetime == $value){echo "selected";}?>><?php echo $value; ?></option>
@@ -66,7 +66,7 @@ if($this->seat_info !== "No"){
                           <?php if($this->date != ""){?>
                           <input type="submit" class="custom-button" name="DATETIME" value="check" id="" />
                           <?php };?>
-                      </form>
+                      <!-- </form> -->
                   </div>
 
               </div>
@@ -499,12 +499,13 @@ if($this->seat_info !== "No"){
               <div class="proceed-book bg_img" data-background="assets/images/movie/movie-bg-proceed.jpg">
                   <div class="proceed-to-book">
                       <div class="book-item">
-                          <button id="book_seats" type="submit" class="custom-button">proceed</button>
+                          <button id="book_seats" type="submit" class="custom-button" name="proceed" value="true">proceed</button>
                       </div>
                   </div>
               </div>
           </div>
           <?php };?>
+            </form>
       </div>
 
       <script>

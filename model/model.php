@@ -127,6 +127,73 @@ class model
         return "No"; 
     }
 
+    protected function chack_seat_empty($table,$key,$seat_arr){
+        $datetime_name = $key;
+        $sql = "SELECT `seat`,`$key` FROM $table WHERE `$key`= 1"; // ( ` ) = 🟢 | ( ' ) = 🔴
+        $sqlex = $this->connection->query($sql);
+         $this->print_stuf($sqlex);
+        if ($sqlex->num_rows > 0) {
+            $data = $sqlex->fetch_all();
+            $arr="no";
+            foreach($data as $key => $value){
+                if(isset($seat_arr[$value[0]]) && $seat_arr[$value[0]] == 'yes'){
+                    $this->print_stuf($seat_arr['G-0']);
+                    $arr = "yes";
+                    return $arr; 
+                }else{
+
+                    // $arr[$key]=$value[0];
+                }
+            };
+            $this->print_stuf($arr);
+            if($arr == "no"){
+                $sql = "UPDATE `$table` SET `$datetime_name`= 1 WHERE `seat`IN (";
+                foreach ($seat_arr as $key => $value) {
+                    // UPDATE `seats` SET `2023-09-09 09:30:00` = '1' WHERE `seat`IN ('G-5','G-6');
+                    $sql.="'$key',";
+                };
+                $sql = substr($sql,0,-1);
+                $sql .= ");";
+                $sqlex = $this->connection->query($sql);
+                $this->print_stuf($sqlex);
+                if ($sqlex == 1) {
+                    return true;
+                };
+            }
+            // return $arr; 
+            //  return $data; 
+        };
+        
+    }
+    protected function chack_movie_id_datetime($table,$movie_id,$datetime){
+        //movie_id and datetime chacking
+        $sql = "SELECT * FROM $table WHERE `movie_id` = $movie_id";
+        $sqlex = $this->connection->query($sql);
+        if($sqlex->num_rows > 0) {
+            $data = $sqlex->fetch_object();
+            $date_arr = explode(",",$data->dates);
+            $this->print_stuf($date_arr);
+            return ["movie_id"=>$movie_id,"datetime_value"=>$date_arr[$datetime],"datetime_key"=>$datetime];
+        };
+        return false;
+    }
+    protected function Add_chack_bookedseat_toUser($table,$_1key,$_2key,$movie_id,$datetime,$seat_chacked_arr){
+        $sql = "UPDATE $table SET `$_1key` = '($movie_id,$datetime,chacked_seats=>[";
+        foreach ($seat_chacked_arr as $arr_key => $arr_value) {
+            $sql.=$arr_key.',' ;
+
+        };
+        // $this->print_stuf($sql);
+        $sql =substr($sql,0,-1);
+        $sql .= "]";
+        $sql.="),' WHERE `$_2key` = 3";
+        $sqlex = $this->connection->query($sql);
+        $this->print_stuf($sql);
+        if($sqlex == 1){
+            header("Location: http://localhost/clones/booking-site-02/public/home");
+        }
+    }
+
 }
 
 
