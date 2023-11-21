@@ -2,7 +2,7 @@
 
 class model 
 {
-    private $connection;
+    protected $connection;
     protected $get_data;
     public $assets = "http://localhost/clones\booking-site-02\public\assets/"; 
     public function __construct(){
@@ -11,14 +11,19 @@ class model
         $directri = "root";
         $data_base = "booking-2";
         $password = "";
-        try {
-            $this->connection = new mysqli($hostname,$directri,$password,$data_base);
-        } catch (\Throwable $th) {
-           echo $th->getMessage();
-        }
+        $this->connect_to_server($hostname,$directri,$data_base,$password);
         // $this->seat_add();
     }
 
+   protected function connect_to_server($hostname = "localhost", $directri = "root", $data_base = "booking-2" ,$password = "" ){
+        try {
+            $new_connection = new mysqli($hostname,$directri,$password,$data_base);
+            $this->connection = $new_connection;
+            return $new_connection;
+        } catch (\Throwable $th) {
+        echo $th->getMessage();
+        }
+   } 
    protected function add_account($table , $data){
         $sql = "INSERT INTO $table (";
         foreach($data as $key => $value){
@@ -117,6 +122,8 @@ class model
         $key = trim($key);
         $this->print_stuf($key);
         $sql = "SELECT `seat`,`$key` FROM $table WHERE `$key`= 1"; // ( ` ) = 🟢 | ( ' ) = 🔴
+        $this->print_stuf($sql);
+        // exit();
         $sqlex = $this->connection->query($sql);
          $this->print_stuf($sqlex);
         if ($sqlex->num_rows > 0) {
@@ -132,37 +139,52 @@ class model
         $sql = "SELECT `seat`,`$key` FROM $table WHERE `$key`= 1"; // ( ` ) = 🟢 | ( ' ) = 🔴
         $sqlex = $this->connection->query($sql);
          $this->print_stuf($sqlex);
+        //   exit();
         if ($sqlex->num_rows > 0) {
             $data = $sqlex->fetch_all();
-            $arr="no";
+            $arr=false;
             foreach($data as $key => $value){
                 if(isset($seat_arr[$value[0]]) && $seat_arr[$value[0]] == 'yes'){
                     $this->print_stuf($seat_arr['G-0']);
-                    $arr = "yes";
-                    return $arr; 
-                }else{
-
-                    // $arr[$key]=$value[0];
+                      echo "0";
+                      $arr=true;
+                    //  exit();
+                    return false; 
                 }
             };
-            $this->print_stuf($arr);
-            if($arr == "no"){
-                $sql = "UPDATE `$table` SET `$datetime_name`= 1 WHERE `seat`IN (";
-                foreach ($seat_arr as $key => $value) {
-                    // UPDATE `seats` SET `2023-09-09 09:30:00` = '1' WHERE `seat`IN ('G-5','G-6');
-                    $sql.="'$key',";
-                };
-                $sql = substr($sql,0,-1);
-                $sql .= ");";
-                $sqlex = $this->connection->query($sql);
-                $this->print_stuf($sqlex);
-                if ($sqlex == 1) {
+            $sql = "UPDATE `$table` SET `$datetime_name`= 1 WHERE `seat`IN (";
+            foreach ($seat_arr as $key => $value) {
+                // UPDATE `seats` SET `2023-09-09 09:30:00` = '1' WHERE `seat`IN ('G-5','G-6');
+                $sql.="'$key',";
+            };
+            $sql = substr($sql,0,-1);
+            $sql .= ");";
+            $sqlex = $this->connection->query($sql);
+            $this->print_stuf($sqlex);
+            if ($sqlex == 1) {
+                echo "1";
+                    // exit();
                     return true;
-                };
-            }
-            // return $arr; 
-            //  return $data; 
-        };
+            };
+        }else{
+            $sql = "UPDATE `$table` SET `$datetime_name`= 1 WHERE `seat`IN (";
+            foreach ($seat_arr as $key => $value) {
+                // UPDATE `seats` SET `2023-09-09 09:30:00` = '1' WHERE `seat`IN ('G-5','G-6');
+                $sql.="'$key',";
+            };
+            $sql = substr($sql,0,-1);
+            $sql .= ");";
+            $sqlex = $this->connection->query($sql);
+            $this->print_stuf($sqlex);
+            if ($sqlex == 1) {
+                echo "1";
+                    // exit();
+                    return true;
+            };
+        }
+        // return $arr; 
+        //  return $data; 
+        
         
     }
     protected function chack_movie_id_datetime($table,$movie_id,$datetime){
@@ -178,17 +200,47 @@ class model
         return false;
     }
     protected function Add_chack_bookedseat_toUser($table,$_1key,$_2key,$movie_id,$datetime,$seat_chacked_arr){
-        $sql = "UPDATE $table SET `$_1key` = '($movie_id,$datetime,chacked_seats=>[";
+         $sql = "SELECT $_1key FROM $table where $_2key = $_COOKIE[user_info]";
+         $this->print_stuf([$_COOKIE["user_info"],$table,$_1key,$_2key,$movie_id,$datetime,$seat_chacked_arr]);
+         $sqlex = $this->connection->query($sql);
+         if($sqlex->num_rows > 0){
+            $data = $sqlex->fetch_object();
+            $pre_query = $data->bookedseat;
+
+             $data = explode(",",$data->bookedseat);
+             $pre_movie_id = ltrim($data[0],"("); 
+            //  $this->print_stuf($pre_movie_id);
+             $pre_datetime = $data[1];
+            //  $this->print_stuf($pre_datetime);
+            //  $this->print_stuf($data[2]);
+             $pre_bockedSeat = rtrim($data[2],")");
+             $pre_bockedSeat = explode("=>",$pre_bockedSeat);
+             $pre_bockedSeat = ltrim($pre_bockedSeat[1],"[");
+             $pre_bockedSeat = rtrim($pre_bockedSeat,"]");
+            //  $this->print_stuf($pre_bockedSeat);
+              $this->print_stuf($pre_query);
+         }
+         if($movie_id == $pre_movie_id && $datetime == $pre_datetime){
+            $pre_bockedSeat = $pre_bockedSeat;
+            $pre_query = "";
+         }else{
+            $pre_bockedSeat ="";
+            $pre_query = $pre_query;
+         }
+        //  exit();
+        $sql = "UPDATE $table SET `$_1key` = '$pre_query($movie_id,$datetime,chacked_seats=>[";
+        $sql .= $pre_bockedSeat;
         foreach ($seat_chacked_arr as $arr_key => $arr_value) {
-            $sql.=$arr_key.',' ;
+            $sql.=$arr_key.'/' ;
 
         };
         // $this->print_stuf($sql);
-        $sql =substr($sql,0,-1);
         $sql .= "]";
+        //  $sql =substr($sql,0,-1);
         $sql.="),' WHERE `$_2key` = 3";
-        $sqlex = $this->connection->query($sql);
         $this->print_stuf($sql);
+        // exit();
+        $sqlex = $this->connection->query($sql);
         if($sqlex == 1){
             header("Location: http://localhost/clones/booking-site-02/public/home");
         }

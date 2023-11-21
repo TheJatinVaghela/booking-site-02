@@ -1,8 +1,13 @@
   <?php 
-    // echo '<pre>';
-    // print_r($this->seat_info);
-    // echo '</pre>';
-if($this->seat_info !== "No"){
+    //  echo '<pre>';
+    //  echo "in php";
+    //  print_r($this->seat_info);
+    //  echo "in php 1`";
+    //  print_r($this->datetime);
+    //  echo "in php 2`";
+    //  print_r($this->date);
+    //  echo '</pre>';
+if($this->seat_info != "No"){
     $seat_info = $this->seat_info;
     foreach ($seat_info as $key => $value) {
         foreach ($value as $key2 => $value2) { 
@@ -16,6 +21,9 @@ if($this->seat_info !== "No"){
             }
         } 
     }
+}else{
+    // echo "in seat_info";
+    // $this->print_stuf($this->seat_info);
 };
   ?>
 
@@ -42,14 +50,14 @@ if($this->seat_info !== "No"){
           <div class="container">
               <div class="page-title-area">
                   <div class="item md-order-1">
-                      <input type="text" name="last_page" value="<?php echo $_REQUEST['last_page']; ?> " hidden>
-                      <a href="http://localhost/clones/booking-site-02/public<?php echo $_REQUEST["last_page"]; ?>" class="custom-button back-button">
+                      <input type="text" name="last_page" value="<?php echo $_REQUEST['last_page'] ?? $this->last_page; ?> " hidden>
+                      <a href="http://localhost/clones/booking-site-02/public<?php echo $_REQUEST["last_page"] ?? $this->last_page; ?>" class="custom-button back-button">
                           <i class="flaticon-double-right-arrows-angles"></i>back
                       </a>
                   </div>
                   <div class="item date-item flex-nowrap">
                       <!-- <form action="" method="post"> -->
-                          <input type="text" name="movie_id" value="<?php echo $_REQUEST["movie_id"]; ?>" id="" hidden>
+                          <input type="text" name="movie_id" value="<?php echo $_REQUEST["movie_id"] ?? $this->movie_id; ?>" id="" hidden>
                           <select class="select-bar" name="datetime">
                               <?php
                                 // echo $this->date; //2023-09-09 09:30:00 year-month-day hour-minit-second

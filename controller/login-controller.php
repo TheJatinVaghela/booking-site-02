@@ -2,14 +2,16 @@
 require_once("../model/model.php");
 class login_controller extends model 
 { 
-    
+    public $user_data ;
     public function __construct(){
         parent::__construct();
         // $this->login_site_initialize();
+        
     } 
     
     public function login_site_initialize(){
-        
+       
+
         if($_SERVER["PATH_INFO"] == '/sign-in'){
             $this->chack_sign_in();
             $this->login_inbitwin("../view/sign_in_up/sign_in.php");
@@ -40,13 +42,14 @@ class login_controller extends model
             // $this->print_stuf($_REQUEST);
             $arr = $this->chack_user_exist("account","user_mail",$_REQUEST["chack_user_mail"]);
             if($arr != false){
-                if(isset($_SESSION["user_info"])){
-                    unset($_SESSION["user_info"]);
-                };
+                 if(isset($_SESSION["user_info"])){
+                     unset($_SESSION["user_info"]);
+                 };
                 
                 if($arr["Terms"]==1){
                     $cookie_name = "user_info";
                     setcookie($cookie_name, $arr["u_id"], time() + (86400 * 30), "/"); // 86400 = 1 day
+                    
                     //  $this->print_stuf($_COOKIE["user_info"]);
                 }
                   header("Location:home");

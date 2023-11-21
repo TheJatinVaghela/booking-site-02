@@ -17,7 +17,6 @@ class controller extends model
     protected function site_initialize(){
         $this->user_info = $this->already_had_user();
         if($_SERVER["PATH_INFO"] == "/home"){
-            
             // $this->print_stuf($this->data_info);
             $this->header_footer_inbitwin("../view/site/home.php");
         }
@@ -36,6 +35,7 @@ class controller extends model
         else if($_SERVER["PATH_INFO"] = "/user"){
             $user = new user_controller();
             $user->user_site_initialize();
+            
         }
         else{
 
